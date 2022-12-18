@@ -2,14 +2,11 @@ const genBtn    = document.getElementById('gen');
 const pkmnCard  = document.getElementById('pkmnCard')
 
 const nameDiv   = document.getElementById('name');
-const levelDiv  = document.getElementById('level');
 const typeDiv   = document.getElementById('type');
 const imageDiv  = document.getElementById('image');
 const lengthDiv = document.getElementById('length');
 const weightDiv = document.getElementById('weight');
-
-const moveDiv  = document.getElementById('move');
-
+const moveDiv   = document.getElementById('move');
 
 const bkgrColors = {
     'bug': '#9DA735',
@@ -21,12 +18,12 @@ const bkgrColors = {
     'fire': '#F08030',
     'flying': '#9987C0', 
     'ghost': '#74608E', 
-    'grass': '#78C850', 
+    'grass': '#78C850',
     'ground': '#E0C068', 
-    'ice': '#98D8D8', 
+    'ice': '#98D8D8', //change
     'normal': '#A8A878', 
     'poison': '#974F92', 
-    'psychic': '#F85888', 
+    'psychic': '#F85888', //change
     'rock': '#A5924B',
     'steel': '#B8B8D0',
     'water': '#6890F0'
@@ -34,9 +31,7 @@ const bkgrColors = {
 
 
 const generateCard = ()=>{
-    var pkmn = Math.floor(Math.random() * 151);
-    var lvl = Math.floor(Math.random() * 100);
-    levelDiv.innerHTML = 'lvl ' + lvl
+    var pkmn = Math.floor(Math.random() * 905);
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${pkmn}`)
     .then((response) => response.json())
@@ -53,12 +48,12 @@ const generateCard = ()=>{
         var weight =  Math.floor(data.weight / 4.536) //convert hectograms to lbs
 
 
-        nameDiv.innerHTML = data.name
-        typeDiv.innerHTML = type
-        imageDiv.innerHTML = `<img src='${data.sprites.front_default}' alt="${data.name}"/>`
+        nameDiv.innerHTML = `<p>${data.name}</p>`
+        typeDiv.innerHTML = `<p>${type}</p>`
+        imageDiv.innerHTML = `<img id='pkmnImage' src='${data.sprites.front_default}' alt="${data.name}"/>`
         lengthDiv.innerHTML = heightFt + "'" + heightIn
         weightDiv.innerHTML = weight + ' lbs'
-        moveDiv.innerHTML = moves[moveNum].move.name
+        moveDiv.innerHTML = `<p>${moves[moveNum].move.name}</p>`
 
         pkmnCard.style.backgroundColor = bkgrColors[type]
     });
