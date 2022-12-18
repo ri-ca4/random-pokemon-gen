@@ -1,4 +1,5 @@
 const genBtn    = document.getElementById('gen');
+const pkmnCard  = document.getElementById('pkmnCard')
 
 const nameDiv   = document.getElementById('name');
 const levelDiv  = document.getElementById('level');
@@ -10,6 +11,28 @@ const weightDiv = document.getElementById('weight');
 const moveDiv  = document.getElementById('move');
 
 
+const bkgrColors = {
+    'bug': '#9DA735',
+    'dragon': '#7038F8', 
+    'dark': '#705848',
+    'electric': '#F8D030', 
+    'fairy': '#F0B6BC',
+    'fighting': '#C03028', 
+    'fire': '#F08030',
+    'flying': '#9987C0', 
+    'ghost': '#74608E', 
+    'grass': '#78C850', 
+    'ground': '#E0C068', 
+    'ice': '#98D8D8', 
+    'normal': '#A8A878', 
+    'poison': '#974F92', 
+    'psychic': '#F85888', 
+    'rock': '#A5924B',
+    'steel': '#B8B8D0',
+    'water': '#6890F0'
+}
+
+
 const generateCard = ()=>{
     var pkmn = Math.floor(Math.random() * 151);
     var lvl = Math.floor(Math.random() * 100);
@@ -19,6 +42,7 @@ const generateCard = ()=>{
     .then((response) => response.json())
     .then((data) => {
         let types = data.types
+        var type = types[0].type.name
         let moves = data.moves
         var moveNum = Math.floor(Math.random() * moves.length)
 
@@ -30,11 +54,13 @@ const generateCard = ()=>{
 
 
         nameDiv.innerHTML = data.name
-        typeDiv.innerHTML = types[0].type.name
+        typeDiv.innerHTML = type
         imageDiv.innerHTML = `<img src='${data.sprites.front_default}' alt="${data.name}"/>`
         lengthDiv.innerHTML = heightFt + "'" + heightIn
         weightDiv.innerHTML = weight + ' lbs'
         moveDiv.innerHTML = moves[moveNum].move.name
+
+        pkmnCard.style.backgroundColor = bkgrColors[type]
     });
 
 }
