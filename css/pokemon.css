@@ -52,6 +52,11 @@ p::first-letter {
     height: 180px;
 }
 
+.energy{
+    height: 20px;
+    width: 20px;
+}
+
 .top{
     justify-content: space-between;
 }

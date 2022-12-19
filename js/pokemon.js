@@ -20,14 +20,15 @@ const bkgrColors = {
     'ghost': '#74608E', 
     'grass': '#78C850',
     'ground': '#E0C068', 
-    'ice': '#98D8D8', //change
+    'ice': '#80B5B6', 
     'normal': '#A8A878', 
     'poison': '#974F92', 
-    'psychic': '#F85888', //change
+    'psychic': '#BF456D', 
     'rock': '#A5924B',
     'steel': '#B8B8D0',
     'water': '#6890F0'
 }
+
 
 
 const generateCard = ()=>{
@@ -49,7 +50,7 @@ const generateCard = ()=>{
 
 
         nameDiv.innerHTML = `<p>${data.name}</p>`
-        typeDiv.innerHTML = `<p>${type}</p>`
+        typeDiv.innerHTML = `<img class='energy' src='./assets/${type}.png' alt="${type}"/>`
         imageDiv.innerHTML = `<img id='pkmnImage' src='${data.sprites.front_default}' alt="${data.name}"/>`
         lengthDiv.innerHTML = heightFt + "'" + heightIn
         weightDiv.innerHTML = weight + ' lbs'
