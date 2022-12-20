@@ -61,4 +61,5 @@ const generateCard = ()=>{
 
 }
 
+window.addEventListener('load', generateCard)
 genBtn.addEventListener('click', generateCard)
